@@ -8,9 +8,9 @@ class Transaction
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @merchant_id = options['merchant_id']
-    @tag_id = options['tag_id']
-    @spent = options['spent']
+    @merchant_id = options['merchant_id'].to_i
+    @tag_id = options['tag_id'].to_i
+    @spent = options['spent'].to_i
   end
 
   def save()
@@ -24,19 +24,19 @@ class Transaction
     sql = "UPDATE transactions
     SET
     (
-      merchant_id,
-      tag_id,
-      spent
-      ) =
-      (
-        $1, $2, $3
-      )
-      WHERE id = $4"
-      values = [@merchant_id, @tag_id, @spent, @id]
-      SqlRunner.run( sql, values )
-    end
+    merchant_id,
+    tag_id,
+    spent
+    ) =
+    (
+    $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@merchant_id, @tag_id, @spent, @id]
+    SqlRunner.run( sql, values )
+  end
 
-  def self.delete()
+  def self.destroy(id)
     sql = "DELETE FROM transactions
     WHERE id = $1"
     values = [id]

@@ -1,0 +1,28 @@
+<h1>All Transactions</h1>
+<h3><a href="/transactions/new">New Transaction</a></h3>
+
+<table>
+  <tr>
+    <th>Transaction id</th>
+    <td>|</td>
+    <th>Merchant</th>
+    <td>|</td>
+    <th>Amount</th>
+    <td>|</td>
+    <th>Tag</th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><%= transaction.id %></td>
+    <td>|</td>
+    <td><a href="/transactions/<%=transaction.id%>">£<%= transaction.spent %></a></td>
+
+    <td>
+      <form action="/transactions/<%= transaction.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+    </td>
+
+  </tr>
+  <% end %>
+</table>
