@@ -3,11 +3,14 @@
 <table>
   <tr>
     <th>id</th>
+    <td>|</td>
     <th>Tag</th>
   </tr>
   <% for tag in @tags %>
   <tr>
     <td><%= tag.id %></td>
-    <td><%= tag.tag %></td><td>|</td>
+    <td>|</td>
+    <td><a href="/tags/<%=tag.id%>"><%= tag.tag %></a></td>
   </tr>
+  <% end %>
 </table>

@@ -10,14 +10,14 @@ class Merchant
   end
 
   def save()
-    sql = "INSERT INTO merchants (name) VALUES ($1) RETURNING id"
+    sql = "INSERT INTO merchants name VALUES $1 RETURNING id"
     values = [@name]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def update()
-    sql = "UPDATE merchants SET (name) = ($1) WHERE id = $2"
+    sql = "UPDATE merchants SET name = $1 WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run( sql, values )
   end
