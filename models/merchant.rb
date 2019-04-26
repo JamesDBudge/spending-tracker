@@ -22,6 +22,23 @@ class Merchant
     SqlRunner.run( sql, values )
   end
 
+  def self.destroy(id)
+    #binding.pry
+    sql = "DELETE FROM merchants
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run( sql, values )
+  end
+
+  def self.find( id )
+    sql = "SELECT * FROM merchants
+    WHERE id = $1"
+    values = [id]
+    merchant = SqlRunner.run( sql, values )
+    result = Merchant.new( merchant.first )
+    return result
+  end
+
   def self.delete()
     sql = "DELETE FROM merchants
     WHERE id = $1"
@@ -32,7 +49,7 @@ class Merchant
   def self.all()
     sql = "SELECT * FROM merchants"
     merchants = SqlRunner.run( sql )
-    result = merchants.map { |merchant| Merchant.new( tag ) }
+    result = merchants.map { |merchant| Merchant.new( merchant ) }
     return result
   end
 

@@ -1,0 +1,24 @@
+<h1>All Merchants</h1>
+<h3><a href="/merchants/new">New Merchant</a></h3>
+
+<table>
+  <tr>
+    <th>id</th>
+    <td>|</td>
+    <th>Merchant</th>
+  </tr>
+  <% for merchant in @merchants %>
+  <tr>
+    <td><%= merchant.id %></td>
+    <td>|</td>
+    <td><a href="/merchants/<%=merchant.id%>"><%= merchant.name %></a></td>
+
+    <td>
+      <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+    </td>
+
+  </tr>
+  <% end %>
+</table>

@@ -23,7 +23,7 @@ class Tag
     SqlRunner.run( sql, values )
   end
 
-  def self.destroy( id )
+  def self.destroy(id)
     #binding.pry
     sql = "DELETE FROM tags
     WHERE id = $1"
