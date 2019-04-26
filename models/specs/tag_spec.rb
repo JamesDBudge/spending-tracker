@@ -23,4 +23,10 @@ class TestTag < MiniTest::Test
     assert_equal(1, result)
   end
 
+  def test_destroy
+    result = Tag.destroy(10)
+    assert_equal(nil, result.first)
+  end
+
+
 end

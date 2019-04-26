@@ -10,7 +10,7 @@ class Merchant
   end
 
   def save()
-    sql = "INSERT INTO merchants name VALUES $1 RETURNING id"
+    sql = "INSERT INTO merchants (name) VALUES ($1) RETURNING id"
     values = [@name]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
@@ -22,10 +22,10 @@ class Merchant
     SqlRunner.run( sql, values )
   end
 
-  def delete()
+  def self.delete()
     sql = "DELETE FROM merchants
     WHERE id = $1"
-    values = [@id]
+    values = [id]
     SqlRunner.run( sql, values )
   end
 

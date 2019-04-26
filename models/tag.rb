@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require('pry')
 
 class Tag
 
@@ -10,7 +11,7 @@ class Tag
   end
 
   def save()
-    sql = "INSERT INTO tags tag VALUES $1 RETURNING id"
+    sql = "INSERT INTO tags (tag) VALUES ($1) RETURNING id;"
     values = [@tag]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
@@ -22,10 +23,11 @@ class Tag
     SqlRunner.run( sql, values )
   end
 
-  def delete()
+  def self.destroy( id )
+    #binding.pry
     sql = "DELETE FROM tags
     WHERE id = $1"
-    values = [@id]
+    values = [id]
     SqlRunner.run( sql, values )
   end
 

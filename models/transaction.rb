@@ -36,10 +36,10 @@ class Transaction
       SqlRunner.run( sql, values )
     end
 
-  def delete()
+  def self.delete()
     sql = "DELETE FROM transactions
     WHERE id = $1"
-    values = [@id]
+    values = [id]
     SqlRunner.run( sql, values )
   end
 
