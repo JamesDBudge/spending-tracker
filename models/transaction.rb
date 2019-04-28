@@ -6,7 +6,7 @@ require_relative('./merchant.rb')
 
 class Transaction
 
-  attr_reader :merchant_id, :tag_id, :id, :spent, :name, :tag
+  attr_reader :merchant_id, :tag_id, :id, :spent, :transaction_time, :name, :tag
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -15,13 +15,15 @@ class Transaction
     @spent = options['spent'].to_i
     @name = options['name'] if options['name']
     @tag = options['tag'] if options['tag']
+    @transaction_time = options['transaction_time'] if options['transaction_time']
   end
 
   def save()
-    sql = "INSERT INTO transactions (merchant_id, tag_id, spent) VALUES ($1, $2, $3) RETURNING id"
+    sql = "INSERT INTO transactions (merchant_id, tag_id, spent, transaction_time) VALUES ($1, $2, $3, NOW()) RETURNING id, transaction_time"
     values = [@merchant_id, @tag_id, @spent]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
+    @transaction_time = results.first()['transaction_time']
   end
 
   def update()
