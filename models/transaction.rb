@@ -67,7 +67,8 @@ class Transaction
     ON transactions.tag_id = tags.id
     INNER JOIN merchants
     ON transactions.merchant_id = merchants.id
-    WHERE tag_id = $1"
+    WHERE tag_id = $1
+    ORDER BY transactions.transaction_time ASC"
     values = [tag]
     transactions = SqlRunner.run(sql, values)
     results = transactions.map { |transaction| Transaction.new(transaction)  }
@@ -81,7 +82,8 @@ class Transaction
     ON transactions.tag_id = tags.id
     INNER JOIN merchants
     ON transactions.merchant_id = merchants.id
-    WHERE merchant_id = $1"
+    WHERE merchant_id = $1
+    ORDER BY transactions.transaction_time ASC"
     values = [merchant]
     transactions = SqlRunner.run(sql, values)
     results = transactions.map { |transaction| Transaction.new(transaction)  }
@@ -107,7 +109,8 @@ class Transaction
     INNER JOIN tags
     ON transactions.tag_id = tags.id
     INNER JOIN merchants
-    ON transactions.merchant_id = merchants.id"
+    ON transactions.merchant_id = merchants.id
+    ORDER BY transactions.transaction_time ASC"
     pretty_transactions = SqlRunner.run(sql)
     result = pretty_transactions.map { |transaction| Transaction.new(transaction) }
     return result
