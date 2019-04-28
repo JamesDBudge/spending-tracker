@@ -8,7 +8,7 @@ require_relative('../models/tag.rb')
 also_reload( '../models/*' )
 
 get '/transactions' do
-  @transactions = Transaction.all()
+  @transactions = Transaction.all_transactions_pretty()
   erb(:"transactions/index")
 end
 
