@@ -4,6 +4,8 @@ require_relative('../db/sql_runner.rb')
 require_relative('./tag.rb')
 require_relative('./merchant.rb')
 
+require('pry-byebug')
+
 class Transaction
 
   attr_reader :merchant_id, :tag_id, :id, :spent, :transaction_time, :name, :tag
@@ -58,6 +60,20 @@ class Transaction
     return result
   end
 
+  def self.find_by_tag(tag)
+    sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+    FROM transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    INNER JOIN merchants
+    ON transactions.merchant_id = merchants.id
+    WHERE tag_id = $1"
+    values = [tag]
+    transactions = SqlRunner.run(sql, values)
+    results = transactions.map { |transaction| Transaction.new(transaction)  }
+    return results
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions"
     transactions = SqlRunner.run( sql )
@@ -71,7 +87,8 @@ class Transaction
   end
 
   def self.all_transactions_pretty()
-    sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag FROM transactions
+    sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+    FROM transactions
     INNER JOIN tags
     ON transactions.tag_id = tags.id
     INNER JOIN merchants

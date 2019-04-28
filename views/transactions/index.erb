@@ -11,20 +11,20 @@
     <td>|</td>
     <th>Tag</th>
     <td>|</td>
-    <td>Timestamp</td>
+    <th>Timestamp</th>
   </tr>
   <% total_spend = 0 %>
   <% for transaction in @transactions %>
   <tr>
     <td><a href="/transactions/<%=transaction.id%>"><%= transaction.id %></a></td>
     <td>|</td>
-    <td><a href="/merchants/"><%= transaction.name %></a></td>
+    <td><a href="/merchants/<%= transaction.merchant_id %>"><%= transaction.name %></a></td>
     <td>|</td>
     <td>£<%= transaction.spent %></td>
     <td>|</td>
-    <td><a href="/tags/"><%= transaction.tag %></a></td>
+    <td><a href="/tags/<%= transaction.tag_id %>"><%= transaction.tag %></a></td>
     <td>|</td>
-    <td><%= transaction.transaction_time %></td>
+    <td><%= transaction.transaction_time.to_s %></td>
     <td>
       <form action="/transactions/<%= transaction.id %>/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete" />

@@ -17,5 +17,5 @@ CREATE TABLE transactions (
   tag_id INT8 REFERENCES tags(id),
   merchant_id INT8 REFERENCES merchants(id),
   spent INT8,
-  transaction_time TIMESTAMP
+  transaction_time TIMESTAMP(0)
 );
