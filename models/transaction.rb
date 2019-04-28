@@ -74,6 +74,21 @@ class Transaction
     return results
   end
 
+  def self.find_by_merchant(merchant)
+    sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+    FROM transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    INNER JOIN merchants
+    ON transactions.merchant_id = merchants.id
+    WHERE merchant_id = $1"
+    values = [merchant]
+    transactions = SqlRunner.run(sql, values)
+    results = transactions.map { |transaction| Transaction.new(transaction)  }
+    return results
+  end
+
+
   def self.all()
     sql = "SELECT * FROM transactions"
     transactions = SqlRunner.run( sql )
