@@ -14,8 +14,8 @@ CREATE TABLE tags (
 
 CREATE TABLE transactions (
   id SERIAL8 PRIMARY KEY,
-  tag_id INT8 REFERENCES tags(id),
-  merchant_id INT8 REFERENCES merchants(id),
+  FOREIGN KEY tag_id INT8 REFERENCES tags(id) ON DELETE CASCADE,
+  FOREIGN KEY merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
   spent INT8,
   transaction_time TIMESTAMP(0)
 );

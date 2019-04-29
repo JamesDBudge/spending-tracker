@@ -24,10 +24,12 @@ class Merchant
 
   def self.destroy(id)
     #binding.pry
-    sql = "DELETE FROM merchants
-    WHERE id = $1"
+    sql = "DELETE FROM transactions WHERE merchant_id = $1"
     values = [id]
     SqlRunner.run( sql, values )
+    sql = "DELETE FROM merchants
+    WHERE id = $1"
+    SqlRunner.run(sql, values)
   end
 
   def self.find( id )
