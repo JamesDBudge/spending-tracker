@@ -6,7 +6,7 @@ class Merchant
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @name = options['name']
+    @name = options['name'].capitalize
   end
 
   def save()
@@ -42,7 +42,7 @@ class Merchant
   end
 
   def self.all()
-    sql = "SELECT * FROM merchants"
+    sql = "SELECT * FROM merchants ORDER BY name ASC"
     merchants = SqlRunner.run( sql )
     result = merchants.map { |merchant| Merchant.new( merchant ) }
     return result

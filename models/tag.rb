@@ -7,7 +7,7 @@ class Tag
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @tag = options['tag']
+    @tag = options['tag'].capitalize
   end
 
   def save()
@@ -43,7 +43,7 @@ class Tag
   end
 
   def self.all()
-    sql = "SELECT * FROM tags"
+    sql = "SELECT * FROM tags ORDER BY tag ASC"
     tags = SqlRunner.run( sql )
     result = tags.map { |tag| Tag.new( tag ) }
     return result
