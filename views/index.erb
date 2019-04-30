@@ -1,1 +1,7 @@
 <h3>Lets find out how much I spent in Greggs this week!</h3>
+
+<h3>This is my current budget: £<%= "%.2f" % @budget.amount %></h3>
+
+
+<h3>Update Budget Amount<form action="/updatebudget" method="POST" name="amount" id="amount"><input type="number" name="amount" step="0.01"></form>
+</h3>

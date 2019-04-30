@@ -20,6 +20,21 @@ table {
 }
 
 .cash {
+  color: black;
+  text-align: right;
+}
+
+.totalred {
   color: red;
+  text-align: right;
+}
+
+.totalgreen {
+  color: green;
+  text-align: right;
+}
+
+.totalyellow {
+  color: yellow;
   text-align: right;
 }

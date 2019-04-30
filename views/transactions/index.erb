@@ -5,8 +5,8 @@
   <tr>
     <th>Transaction id</th>
     <th>Merchant</th>
-    <th>Amount</th>
     <th>Tag</th>
+    <th>Amount</th>
     <th>Timestamp</th>
   </tr>
   <% total_spend = 0 %>
@@ -14,8 +14,8 @@
   <tr>
     <td><a href="/transactions/<%=transaction.id%>"><%= transaction.id %></a></td>
     <td><a href="/merchants/<%= transaction.merchant_id %>"><%= transaction.name %></a></td>
-    <td class="cash">£<%= "%.2f" % transaction.spent %></td>
     <td><a href="/tags/<%= transaction.tag_id %>"><%= transaction.tag %></a></td>
+    <td class="cash">£<%= "%.2f" % transaction.spent %></td>
     <td><%= transaction.transaction_time.to_s %></td>
     <td>
       <form action="/transactions/<%= transaction.id %>/delete" method="POST">
@@ -26,8 +26,19 @@
   </tr>
   <% end %>
   <tr>
-    <td></td>
+    <td>Budget</td>
+    <td class="cash">£<%= "%.2f" % @budget.amount %></td>
     <td>Total:</td>
-    <td class="cash">£<%= "%.2f" % total_spend %></td>
+    <td class=
+      <% percent_spent = total_spend/@budget.amount %>
+      <% if percent_spent > 0.8 %>
+      <%= "totalred" %>
+      <% elsif percent_spent < 0.5 %>
+      <%= "totalgreen" %>
+      <% else %>
+      <%= "totalyellow" %>
+      <% end %>
+
+    >£<%= "%.2f" % total_spend %></td>
   </tr>
 </table>

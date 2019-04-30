@@ -1,11 +1,12 @@
 require_relative('../db/sql_runner.rb')
 
 class Budget
+
   attr_reader :id, :amount
 
   def initialize(options)
-    @id = options['id'] if options['id']
-    @amount = options['amount']
+    @id = options['id'].to_i if options['id']
+    @amount = options['amount'].to_f.round(2)
   end
 
   def save
@@ -16,8 +17,8 @@ class Budget
   end
 
   def update()
-    sql = "UPDATE moneys SET amount = $1 where id = $2"
-    values = [@amount, @id]
+    sql = "UPDATE moneys SET amount = $1 where id = 1"
+    values = [@amount]
     SqlRunner.run(sql, values)
   end
 
@@ -33,5 +34,12 @@ class Budget
     SqlRunner.run(sql)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM moneys WHERE moneys.id = $1"
+    values = [id]
+    budget = SqlRunner.run(sql, values)
+    result = Budget.new(budget.first)
+    return result
+  end
 
 end

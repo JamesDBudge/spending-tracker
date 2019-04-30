@@ -8,6 +8,7 @@ require_relative('../models/tag.rb')
 also_reload( '../models/*' )
 
 get '/transactions' do
+  @budget = Budget.find(1)
   @transactions = Transaction.all_transactions_pretty()
   erb(:"transactions/index")
 end
