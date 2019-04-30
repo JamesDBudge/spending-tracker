@@ -1,24 +1,26 @@
 <h1>Add New Transaction</h1>
-<form action="/transactions" method="POST">
+<h3>
+  <form action="/transactions" method="POST">
 
-  <label for="merchant_select">
-    <select name="merchant_id" id="merchant_select">
-      <% @merchants.each do |merchant| %>
-          <option value=<%= merchant.id %>><%= merchant.name.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+    <label for="merchant_select">
+      <select name="merchant_id" id="merchant_select">
+        <% @merchants.each do |merchant| %>
+        <option value=<%= merchant.id %>><%= merchant.name.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
 
-  <label for="tag_select">
-    <select name="tag_id" id="tag_select">
-      <% @tags.each do |tag| %>
-          <option value=<%= tag.id %>><%= tag.tag.capitalize %></option>
-      <% end %>
-    </select>
-  </label>
+    <label for="tag_select">
+      <select name="tag_id" id="tag_select">
+        <% @tags.each do |tag| %>
+        <option value=<%= tag.id %>><%= tag.tag.capitalize %></option>
+        <% end %>
+      </select>
+    </label>
 
-  <label for="spent">
-    <input type="number" name="spent" id="spent">
-  </label>
-  <input type="submit" value="Add transaction">
-</form>
+    <label for="spent">
+      <input type="number" name="spent" id="spent">
+    </label>
+    <input type="submit" value="Add transaction">
+  </form>
+</h3>

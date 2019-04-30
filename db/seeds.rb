@@ -1,10 +1,14 @@
 require_relative('../models/tag.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/merchant.rb')
+require_relative('../models/budget.rb')
 
 Transaction.delete_all()
 Tag.delete_all()
 Merchant.delete_all()
+Budget.delete_all()
+
+budget = Budget.new({'amount' => 0})
 
 tag1 = Tag.new({'tag' => 'groceries'})
 tag1.save
@@ -35,42 +39,42 @@ merchant6.save
 transaction1 = Transaction.new({
   "tag_id" => tag1.id,
   "merchant_id" => merchant1.id,
-  "spent" => 22
+  "spent" => 22.07
   })
 transaction1.save
 transaction2 = Transaction.new({
   "tag_id" => tag1.id,
   "merchant_id" => merchant2.id,
-  "spent" => 31
+  "spent" => 31.22
   })
 transaction2.save
 transaction3 = Transaction.new({
   "tag_id" => tag3.id,
   "merchant_id" => merchant5.id,
-  "spent" => 4
+  "spent" => 4.80
   })
 transaction3.save
 transaction4 = Transaction.new({
   "tag_id" => tag4.id,
   "merchant_id" => merchant6.id,
-  "spent" => 10
+  "spent" => 10.71
   })
 transaction4.save
 transaction5 = Transaction.new({
   "tag_id" => tag1.id,
   "merchant_id" => merchant1.id,
-  "spent" => 60
+  "spent" => 60.00
   })
 transaction5.save
 transaction6 = Transaction.new({
   "tag_id" => tag3.id,
   "merchant_id" => merchant3.id,
-  "spent" => 13
+  "spent" => 13.30
   })
 transaction6.save
 transaction7 = Transaction.new({
   "tag_id" => tag4.id,
   "merchant_id" => merchant4.id,
-  "spent" => 22
+  "spent" => 22.83
   })
 transaction7.save

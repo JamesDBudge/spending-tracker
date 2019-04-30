@@ -1,7 +1,7 @@
 <h4>Edit Transaction</h4>
 <p>Transaction <%= @transaction.id %></p>
 
-<p>
+<h3>
   <form action="/transactions/<%= @transaction.id %>" method="POST">
 
     <label for="merchant_select">Select Merchant:</label>
@@ -29,4 +29,4 @@
     <label for="spent"><input type="text" name="spent" id="spent" value="<%= "%.2f" % @transaction.spent %>"></label>
     <input type="submit" value="Edit transaction">
   </form>
-</p>
+</h3>

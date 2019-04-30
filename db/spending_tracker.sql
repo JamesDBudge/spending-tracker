@@ -1,6 +1,12 @@
 DROP TABLE transactions;
 DROP TABLE tags;
 DROP TABLE merchants;
+DROP TABLE moneys;
+
+CREATE TABLE moneys (
+  id SERIAL8 PRIMARY KEY,
+  amount DECIMAL(7,2)
+);
 
 CREATE TABLE merchants (
   id SERIAL8 PRIMARY KEY,
