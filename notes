@@ -1,0 +1,50 @@
+# def self.find_by_tag(tag)
+#   sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+#   FROM transactions
+#   INNER JOIN tags
+#   ON transactions.tag_id = tags.id
+#   INNER JOIN merchants
+#   ON transactions.merchant_id = merchants.id
+#   WHERE tag_id = $1
+#   ORDER BY transactions.transaction_time ASC"
+#   values = [tag]
+#   transactions = SqlRunner.run(sql, values)
+#   results = transactions.map { |transaction| Transaction.new(transaction)  }
+#   return results
+# end
+#
+# def self.find_by_merchant(merchant)
+#   sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+#   FROM transactions
+#   INNER JOIN tags
+#   ON transactions.tag_id = tags.id
+#   INNER JOIN merchants
+#   ON transactions.merchant_id = merchants.id
+#   WHERE merchant_id = $1
+#   ORDER BY transactions.transaction_time ASC"
+#   values = [merchant]
+#   transactions = SqlRunner.run(sql, values)
+#   results = transactions.map { |transaction| Transaction.new(transaction)  }
+#   return results
+# end
+
+def self.find_by_column(uniq_id, column_name)
+  sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
+  FROM transactions
+  INNER JOIN tags
+  ON transactions.tag_id = tags.id
+  INNER JOIN merchants
+  ON transactions.merchant_id = merchants.id
+  WHERE #{column_name}_id = $1
+  ORDER BY transactions.transaction_time ASC"
+  values = [uniq_id]
+  transactions = SqlRunner.run(sql, values)
+  results = transactions.map { |transaction| Transaction.new(transaction)  }
+  return results
+end
+
+SqlRunner doesn't like it when you try to jam a second statement into it because it'll only run one at a time.
+
+Refactoring: most of the actions could be administrated from the main 'all transaction' view. e.g a '+' button next to tag, merchant, spending columns to direct to adding new tags, merchants and transactions. Transaction ID should only be displayed on the specific transaction's page, if it is even needed as the timestamp is probably more useful to the user. Transactions should have an edit button on the main view next to the delete button.
+
+Tags and merchants should ask for confirmation before editing and deleting as they affect all linked transactions.

@@ -32,6 +32,8 @@ end
 
 get '/transactions/:id' do
   @transaction = Transaction.find(params['id'].to_i)
+  @merchants = Merchant.all()
+  @tags = Tag.all()
   erb(:"transactions/show")
 end
 

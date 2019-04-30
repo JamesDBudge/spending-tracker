@@ -4,13 +4,11 @@
 <table>
   <tr>
     <th>id</th>
-    <td>|</td>
     <th>Merchant</th>
   </tr>
   <% for merchant in @merchants %>
   <tr>
     <td><%= merchant.id %></td>
-    <td>|</td>
     <td><a href="/merchants/<%=merchant.id%>"><%= merchant.name %></a></td>
 
     <td>

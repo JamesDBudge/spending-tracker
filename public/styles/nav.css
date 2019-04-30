@@ -1,4 +1,5 @@
-nav {
+nav  {
+  flex;
   text-align: center;
   justify-content: center;
   margin: auto;

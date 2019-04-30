@@ -1,29 +1,21 @@
 <h1>All Transactions</h1>
-<h3><a href="/transactions/new">New Transaction</a></h3>
+<h3><a href="/transactions/new">Add A New Transaction</a></h3>
 
 <table>
   <tr>
     <th>Transaction id</th>
-    <td>|</td>
     <th>Merchant</th>
-    <td>|</td>
     <th>Amount</th>
-    <td>|</td>
     <th>Tag</th>
-    <td>|</td>
     <th>Timestamp</th>
   </tr>
   <% total_spend = 0 %>
   <% for transaction in @transactions %>
   <tr>
     <td><a href="/transactions/<%=transaction.id%>"><%= transaction.id %></a></td>
-    <td>|</td>
     <td><a href="/merchants/<%= transaction.merchant_id %>"><%= transaction.name %></a></td>
-    <td>|</td>
     <td class="cash">£<%= transaction.spent %></td>
-    <td>|</td>
     <td><a href="/tags/<%= transaction.tag_id %>"><%= transaction.tag %></a></td>
-    <td>|</td>
     <td><%= transaction.transaction_time.to_s %></td>
     <td>
       <form action="/transactions/<%= transaction.id %>/delete" method="POST">
@@ -35,9 +27,7 @@
   <% end %>
   <tr>
     <td></td>
-    <td></td>
     <td>Total:</td>
-    <td>|</td>
-    <td>£<%= total_spend %></td>
+    <td class="cash">£<%= total_spend %></td>
   </tr>
 </table>

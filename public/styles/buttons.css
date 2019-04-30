@@ -1,0 +1,9 @@
+.btn--danger {
+  background-color: #ff6f69;
+  font-weight: bold;
+  border-color: #588c7e;
+}
+
+.btn--edit {
+  background-color: #96ceb4;
+}

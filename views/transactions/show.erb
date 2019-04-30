@@ -1,1 +1,30 @@
-<p><%= @transaction.id %> <%= @transaction.spent %></p><a href="/transactions/<%= @transaction.id %>/edit">Edit</a>
+<form action="/merchants/<%= @transaction.id %>/edit" method="GET"><input class="btn--edit" type="submit" value="Edit Transaction" /></form>
+
+<table>
+  <tr>
+    <th>Transaction id</th>
+    <th>Merchant</th>
+    <th>Amount</th>
+    <th>Tag</th>
+    <th>Timestamp</th>
+  </tr>
+  <% total_spend = 0 %>
+  <tr>
+    <td><a href="/transactions/<%=@transaction.id%>"><%= @transaction.id %></a></td>
+    <td><a href="/merchants/<%= @transaction.merchant_id %>"><%= @transaction.name %></a></td>
+    <td class="cash">£<%= @transaction.spent %></td>
+    <td><a href="/tags/<%= @transaction.tag_id %>"><%= @transaction.tag %></a></td>
+    <td><%= @transaction.transaction_time.to_s %></td>
+    <td>
+      <form action="/transactions/<%= @transaction.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+    </td>
+    <% total_spend += @transaction.spent.to_i %>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Total:</td>
+    <td class="cash">£<%= total_spend %></td>
+  </tr>
+</table>
