@@ -26,7 +26,7 @@
       <% end %>
     </select>
 
-    <label for="spent"><input type="text" name="spent" id="spent" value="<%= @transaction.spent %>"></label>
+    <label for="spent"><input type="text" name="spent" id="spent" value="<%= "%.2f" % @transaction.spent %>"></label>
     <input type="submit" value="Edit transaction">
   </form>
 </p>

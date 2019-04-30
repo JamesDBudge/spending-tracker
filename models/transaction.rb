@@ -14,7 +14,7 @@ class Transaction
     @id = options['id'].to_i if options['id']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
-    @spent = options['spent'].to_i
+    @spent = options['spent'].to_f.round(2)
     @name = options['name'] if options['name']
     @tag = options['tag'] if options['tag']
     @transaction_time = options['transaction_time'] if options['transaction_time']

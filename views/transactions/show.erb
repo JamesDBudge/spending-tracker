@@ -1,4 +1,4 @@
-<form action="/merchants/<%= @transaction.id %>/edit" method="GET"><input class="btn--edit" type="submit" value="Edit Transaction" /></form>
+<h3><form action="/transactions/<%= @transaction.id %>/edit" method="GET"><input class="btn--edit" type="submit" value="Edit Transaction" /></form></h3>
 
 <table>
   <tr>
@@ -12,7 +12,7 @@
   <tr>
     <td><a href="/transactions/<%=@transaction.id%>"><%= @transaction.id %></a></td>
     <td><a href="/merchants/<%= @transaction.merchant_id %>"><%= @transaction.name %></a></td>
-    <td class="cash">£<%= @transaction.spent %></td>
+    <td class="cash">£<%= "%.2f" % @transaction.spent %></td>
     <td><a href="/tags/<%= @transaction.tag_id %>"><%= @transaction.tag %></a></td>
     <td><%= @transaction.transaction_time.to_s %></td>
     <td>
@@ -20,11 +20,11 @@
         <input class="btn btn--danger" type="submit" value="delete" />
       </form>
     </td>
-    <% total_spend += @transaction.spent.to_i %>
+    <% total_spend += @transaction.spent %>
   </tr>
   <tr>
     <td></td>
     <td>Total:</td>
-    <td class="cash">£<%= total_spend %></td>
+    <td class="cash">£<%= "%.2f" % total_spend %></td>
   </tr>
 </table>
