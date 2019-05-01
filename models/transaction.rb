@@ -65,14 +65,14 @@ class Transaction
     return result
   end
 
-  def self.find_by_column(uniq_id, column_name)
+  def self.find_by_value(uniq_id, value_name)
     sql = "SELECT transactions.id, merchants.name, transactions.spent, tags.tag, transactions.tag_id, transactions.merchant_id, transactions.transaction_time
     FROM transactions
     INNER JOIN tags
     ON transactions.tag_id = tags.id
     INNER JOIN merchants
     ON transactions.merchant_id = merchants.id
-    WHERE #{column_name} = $1
+    WHERE #{value_name} = $1
     ORDER BY transactions.transaction_time ASC"
     values = [uniq_id]
     transactions = SqlRunner.run(sql, values)

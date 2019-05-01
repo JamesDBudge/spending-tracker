@@ -31,7 +31,9 @@
     <td>Total:</td>
     <td class=
       <% percent_spent = total_spend/@budget.amount %>
-      <% if percent_spent > 0.8 %>
+      <% if percent_spent > 1 %>
+      <%= "totalwhite" %>
+      <% elsif percent_spent > 0.8 %>
       <%= "totalred" %>
       <% elsif percent_spent < 0.5 %>
       <%= "totalgreen" %>
@@ -42,3 +44,7 @@
     >£<%= "%.2f" % total_spend %></td>
   </tr>
 </table>
+
+<h1><% if percent_spent > 1 %>
+<%= "WTF MATE YOU BLEW THE BUDGET AGAIN!!!" %>
+<% end %></h1>

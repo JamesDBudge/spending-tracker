@@ -5,3 +5,9 @@ nav  {
   margin: auto;
 
 }
+
+nav a {
+  padding: 10px;
+  border: 5px solid #587e76;
+  background-color: #587e76;
+}

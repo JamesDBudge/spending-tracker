@@ -3,13 +3,13 @@ td, th {
 }
 
 td {
-  padding: 10px 20px 0px 0px;
+  padding: 10px 5px 10px 5px;
   border: 3px solid #587e76;
   color: #ffcc5c
 }
 
 th {
-  padding: 0px 20px 10px 0px;
+  padding: 10px 10px 10px 0px;
   border: 3px solid #587e76;
   color: #f2e394
 }
@@ -36,5 +36,10 @@ table {
 
 .totalyellow {
   color: yellow;
+  text-align: right;
+}
+
+.totalwhite {
+  color: white;
   text-align: right;
 }

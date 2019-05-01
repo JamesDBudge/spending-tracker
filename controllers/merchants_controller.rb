@@ -27,7 +27,7 @@ end
 
 get '/merchants/:id' do
   @merchant = Merchant.find(params['id'].to_i)
-  @transactions = Transaction.find_by_column(params['id'].to_i, "merchant_id")
+  @transactions = Transaction.find_by_value(params['id'].to_i, "merchant_id")
   erb(:"merchants/show")
 end
 

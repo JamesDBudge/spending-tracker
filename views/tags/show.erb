@@ -1,4 +1,5 @@
-<a href="/tags/<%= @tag.id %>/edit">Edit <%= @tag.tag %> tag</a>
+<h3><form action="/tags/<%= @tag.id %>/edit" method="GET"><input class="btn--edit" type="submit" value="Edit <%= @tag.tag %> Tag" /></form></h3>
+
 <table>
   <tr>
     <th>Transaction id</th>

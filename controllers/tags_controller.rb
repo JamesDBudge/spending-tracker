@@ -27,7 +27,7 @@ end
 
 get '/tags/:id' do
   @tag = Tag.find(params['id'].to_i)
-  @transactions = Transaction.find_by_column(params['id'].to_i, "tag_id")
+  @transactions = Transaction.find_by_value(params['id'].to_i, "tag_id")
   erb(:"tags/show")
 end
 

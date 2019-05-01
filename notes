@@ -51,4 +51,6 @@ Tags and merchants should ask for confirmation before editing and deleting as th
 
 Wondering if I'm being too strict about my data as everything is an inner join, though banks would probably be this strict anyway.
 
-nice little string operation in sinatra: "%.2f" % @whatever.thing_i_want_to_always_display_2_dec_places
+nice little string operation/possible regex in sinatra: "%.2f" % @whatever.thing_i_want_to_always_display_2_dec_places
+
+sinatra changes the class of the 'total' field basec on the percentage of budget that has been spent in order to change the colour of the text contained within it
