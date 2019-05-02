@@ -51,6 +51,12 @@ Atom
 
 My goal with this project was to consolidate the learning from the first 4 weeks. While planning the project it quickly became obvious that every table within the database would need its own controller and its own set of views for all the functionality I wanted to put in.
 
+Tags and merchants both have one-to-many relationships with transactions. Tags and merchants have a many-to-many relationship by transiting the transaction table. One tag can be assigned to many merchants via transactions, one merchant can have many tags via transactions.
+
+Budgie's Budget App has all of the functionality specified in the brief and most of the functionality desired in the extensions.
+
+
+
 
 Personal Extension Ideas:
 
