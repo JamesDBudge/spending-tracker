@@ -8,8 +8,6 @@ require_relative('models/budget.rb')
 
 also_reload('../models/*')
 
-class App < Sinatra::Base
-
   get '/' do
     @budget = Budget.find(1)
     erb(:index)
@@ -20,5 +18,3 @@ class App < Sinatra::Base
     budget.update
     redirect to '/'
   end
-
-end
