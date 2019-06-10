@@ -8,13 +8,17 @@ require_relative('models/budget.rb')
 
 also_reload('../models/*')
 
-get '/' do
-  @budget = Budget.find(1)
-  erb(:index)
-end
+class App < Sinatra::Base
 
-post '/updatebudget' do
-  budget = Budget.new(params)
-  budget.update
-  redirect to '/'
+  get '/' do
+    @budget = Budget.find(1)
+    erb(:index)
+  end
+
+  post '/updatebudget' do
+    budget = Budget.new(params)
+    budget.update
+    redirect to '/'
+  end
+
 end
