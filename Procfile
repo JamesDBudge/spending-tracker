@@ -1,1 +1,1 @@
-web: ruby spending_tracker.rb
+web: ruby bundle exec rackup config.ru -p $PORT
