@@ -37,11 +37,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
+  mustermann
   pg
   pry-byebug
+  rack
+  rack-protection
   sinatra
   sinatra-contrib
   sinatra-flash
+  tilt
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    2.0.1
