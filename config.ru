@@ -1,4 +1,4 @@
 # config.ru
-require "./spending_tracker.rb"
+#require "./spending_tracker.rb"
 
 run Sinatra::Application
