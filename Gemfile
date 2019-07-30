@@ -6,6 +6,11 @@ gem 'sinatra-contrib'
 gem 'pg'
 gem 'sinatra-flash'
 gem 'bundler'
+gem 'mustermann'
+gem 'rack'
+gem 'rack-protection'
+gem 'rake'
+gem 'tilt'
 
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}"}
